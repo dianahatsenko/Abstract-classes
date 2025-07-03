@@ -1,20 +1,19 @@
-
 package figure_pract;
 
 import java.util.*;
 import java.io.*;
-
+// Список для зберігання фігур
 public class Picture {
     private List<Figure> figures;
 
     public Picture() {
         figures = new ArrayList<>();
     }
-
+// Додає фігуру до списку
     public void addFigure(Figure f) {
         figures.add(f);
     }
-
+// Виводить усі фігури з їхніми параметрами, площею та периметром
     public void printAll() {
         for (Figure f : figures) {
             if (f instanceof Rectangle) {
@@ -47,15 +46,15 @@ public class Picture {
         }
         return total;
     }
-//Функція сортування площі
+// Сортує список фігур за зростанням площі
     public void sortByArea() {
         figures.sort(Comparator.comparingDouble(Figure::getArea));
     }
-//Функція сортування периметрів
+// Сортує список фігур за зростанням периметра
     public void sortByPerimeter() {
         figures.sort(Comparator.comparingDouble(Figure::getPerimeter));
     }
-//Функція для зберігання в файл
+//Функція для збереження фігури в текстовий файл
     public void saveToFile(String filename) throws IOException {
         try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
             for (Figure f : figures) {
@@ -73,7 +72,7 @@ public class Picture {
             }
         }
     }
-//Функція для запису у файл
+// Зчитує фігури з текстового файлу та додає їх у список
     public void loadFromFile(String filename) throws IOException {
         figures.clear();
         try (Scanner scanner = new Scanner(new FileReader(filename))) {
@@ -102,3 +101,4 @@ public class Picture {
         }
     }
 }
+
